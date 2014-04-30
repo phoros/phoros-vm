@@ -17,9 +17,16 @@ The VirtualBox Guest Additions for Vagrant.  After installing vagrant, you can i
 
 ## Usage ##
 
-Open a terminal session to the virtual machine:
+Open a terminal session to the virtual machine, and 
 
     vagrant ssh
 
-Then ...
+from prompt there:
+
+    sh /vagrant/phoros.sh
+    
+
+8080 on VM forwarded to 8888 on host
+
+Point you browser at: `http://localhost:8888/phoros` (or so)
 

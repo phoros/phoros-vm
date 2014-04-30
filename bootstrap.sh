@@ -1,6 +1,46 @@
 #!/usr/bin/env bash
 
-# Start from latest and greatest
+
+# Get fuseki and jena from binary downloads:
+FUSEKIFILE=jena-fuseki-1.0.1
+JENAFILE=apache-jena-2.11.1
+
+if [ ! -d /vagrant/sparql/$FUSEKIFILE ]; then
+    echo Need to install fuseki
+    echo ""
+    cd /vagrant/sparql;
+    wget http://apache.mirrors.lucidnetworks.net//jena/binaries/$FUSEKIFILE-distribution.tar.gz;
+    tar zxf $FUSEKIFILE-distribution.tar.gz;
+    rm $FUSEKIFILE-distribution.tar.gz;
+fi
+
+cd /vagrant
+if [ -h "fuseki" ]; then
+    echo "Already have link to fuseki installation."
+else
+    ln -s /vagrant/sparql/$FUSEKIFILE /vagrant/fuseki
+fi
+
+
+if [ ! -d /vagrant/sparql/$JENAFILE ]; then
+    echo Need to install jena.
+    echo ""
+    cd /vagrant/sparql;
+    wget http://apache.osuosl.org//jena/binaries/$JENAFILE.tar.gz
+    tar zxf $JENAFILE.tar.gz;
+    rm $JENAFILE.tar.gz;
+fi
+
+
+cd /vagrant
+if [ -h "jena" ]; then
+    echo "Already have link to jena installation."
+else
+    ln -s /vagrant/sparql/$JENAFILE /vagrant/jena
+fi
+
+
+# Start from latest and greatest:
 apt-get update
 
 # version control
@@ -21,21 +61,6 @@ apt-get install -y openjdk-7-jdk
 # build system and dependency mgt
 apt-get install -y gradle
 apt-get install -y maven
-
-
-# tools for markdown: pandoc
-apt-get install -y pandoc
-
-# tools for markdown: beautifuldocs
-apt-get install -y nodejs
-if [ -h "/usr/bin/node" ]; then
-    echo "Already have symln for node"
-else
-    sudo ln -s /usr/bin/nodejs /usr/bin/node
-fi
-
-apt-get install -y npm
-npm install beautiful-docs
 
 # Update and trust apt to clean up some space for us:
 apt-get upgrade
