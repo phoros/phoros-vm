@@ -42,7 +42,7 @@ tdb:GraphTDB    rdfs:subClassOf  ja:Model .
     .
 
 <#tdb_dataset_phoros> rdf:type      tdb:DatasetTDB ;
-    tdb:location "/data/tdbs/phoros" ;
+    tdb:location "/vagrant/sparql/tdbs" ;
 ##     # Query timeout on this dataset (milliseconds)
        ja:context [ ja:cxtName "arq:queryTimeout" ;  ja:cxtValue "50000,600000" ] ;
 #s#     # Default graph for query is the (read-only) union of all named graphs.
