@@ -68,6 +68,13 @@ fi
 /bin/mkdir /vagrant/sparql/tdbs
 /vagrant/jena/bin/tdbloader2 -loc /vagrant/sparql/tdbs /vagrant/sparql/all.ttl
 
+
+
+echo "Starting fuseki"
+cd /vagrant/fuseki
+./fuseki-server --port=3030 --config=/vagrant/sparql/fuseki-conf.ttl &
+
+
 # 3. start servlet
 cd /vagrant/citeservlet
 echo Starting servlet.

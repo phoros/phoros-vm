@@ -28,5 +28,5 @@ from prompt there:
 
 8080 on VM forwarded to 8888 on host
 
-Point you browser at: `http://localhost:8888/phoros` (or so)
+Point you browser at: `http://localhost:8888/citeservlet/`
 
